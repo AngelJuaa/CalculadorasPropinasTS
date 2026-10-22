@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import type { OrderTotalsProps } from "../types";
-
+import { formatCurrency } from "../helpers";
 export default function OrderTotal({
   order,
   tip,
@@ -15,12 +15,6 @@ export default function OrderTotal({
     () => subtotalAmount() + tipAmount(),
     [order, tip],
   );
-  const formatCurrency = (amount: number) =>
-    new Intl.NumberFormat("es-MX", {
-      style: "currency",
-      currency: "MXN",
-    }).format(amount);
-
   return (
     <div className="border-t border-slate-200 pt-5">
       <h2 className="text-xl font-black text-slate-900">Totales y propina</h2>
