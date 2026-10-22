@@ -2,10 +2,11 @@ import { menuItems } from "./assets/data/db";
 import MenuItem from "./components/MenuItem";
 import OrderContents from "./components/OrderContents";
 import OrderTotal from "./components/OrderTotal";
+import TipPercentageForm from "./components/TipPercentageForm";
 import useOrder from "./hooks/useOrder";
 
 function App() {
-  const { order, tip, addItem, removeItem, placeOrder } = useOrder();
+  const { order, tip, setTip, addItem, removeItem, placeOrder } = useOrder();
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900">
@@ -44,6 +45,7 @@ function App() {
             <div className="space-y-8">
               <OrderContents order={order} removeItem={removeItem} />
               <OrderTotal order={order} tip={tip} placeOrder={placeOrder} />
+              <TipPercentageForm tip={tip} setTip={setTip} />
             </div>
           ) : (
             <div className="flex min-h-64 flex-col items-center justify-center text-center">
